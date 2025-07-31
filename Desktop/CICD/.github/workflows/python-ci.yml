@@ -1,0 +1,21 @@
+name: Python CI/CD
+
+on: [push]  # Runs on every git push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4  # Checks out your code
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          pip install flask pytest
+
+      - name: Run tests
+        run: pytest
